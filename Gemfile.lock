@@ -108,6 +108,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chamber (0.0.1)
     cliver (0.3.2)
     codecov (0.1.10)
       json
@@ -617,6 +618,7 @@ DEPENDENCIES
   capistrano-faster-assets (~> 1.0)
   capistrano-passenger
   capistrano-rails
+  chamber
   decidim (>= 0.7.0, <= 0.8.0)
   decidim-collaborations (~> 0.1.0)!
   decidim-dev
