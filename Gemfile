@@ -11,7 +11,7 @@ gem 'decidim-collaborations', '~> 0.1.0', git: 'https://github.com/podemos-info/
 # gem "decidim-assemblies", path: ".."
 
 gem "bootsnap", require: false
-gem 'chamber'
+gem 'chamber', '~> 2.10.1'
 
 gem "puma", "~> 3.0"
 gem "uglifier", ">= 1.3.0"
