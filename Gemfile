@@ -5,7 +5,8 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 
 gem "decidim", '>= 0.7.0', '<= 0.8.0'
-gem 'decidim-collaborations', '~> 0.1.0', git: 'https://github.com/podemos-info/decidim-collaborations.git', branch: 'process-collaborations'
+gem 'decidim-assemblies'
+gem 'decidim-collaborations', '~> 0.1.0', git: 'https://github.com/podemos-info/decidim-collaborations.git', branch: 'master'
 
 # Uncomment the following line if you want to use decidim-assemblies plugin
 # gem "decidim-assemblies", path: ".."
