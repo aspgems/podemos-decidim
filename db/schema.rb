@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108103323) do
+ActiveRecord::Schema.define(version: 20171130164730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bics", force: :cascade do |t|
+    t.string "country", null: false
+    t.string "bank_code", null: false
+    t.string "bic", null: false
+    t.index ["country", "bank_code"], name: "index_bics_on_country_and_bank_code", unique: true
+  end
 
   create_table "decidim_accountability_results", id: :serial, force: :cascade do |t|
     t.jsonb "title"
@@ -163,15 +170,31 @@ ActiveRecord::Schema.define(version: 20171108103323) do
     t.jsonb "title"
     t.jsonb "description"
     t.integer "default_amount"
-    t.integer "maximum_authorized_amount"
+    t.integer "minimum_custom_amount"
     t.integer "target_amount"
-    t.decimal "total_collected", precision: 11, scale: 2
     t.decimal "decimal", precision: 11, scale: 2
     t.date "active_until"
     t.bigint "decidim_feature_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "amounts"
+    t.jsonb "terms_and_conditions"
     t.index ["decidim_feature_id"], name: "decidim_colaborations_feature_index"
+  end
+
+  create_table "decidim_collaborations_user_collaborations", force: :cascade do |t|
+    t.bigint "decidim_user_id"
+    t.bigint "decidim_collaborations_collaboration_id"
+    t.decimal "amount", precision: 11, scale: 2, null: false
+    t.integer "state", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "frequency", default: 0, null: false
+    t.integer "payment_method_id"
+    t.date "last_order_request_date"
+    t.index ["decidim_collaborations_collaboration_id"], name: "user_collaboration_collaboration_idx"
+    t.index ["decidim_user_id"], name: "user_colaboration_user_idx"
+    t.index ["state"], name: "index_decidim_collaborations_user_collaborations_on_state"
   end
 
   create_table "decidim_comments_comment_votes", id: :serial, force: :cascade do |t|
