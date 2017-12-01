@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130164730) do
+ActiveRecord::Schema.define(version: 20171201110653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
 
   create_table "bics", force: :cascade do |t|
     t.string "country", null: false
@@ -668,6 +669,25 @@ ActiveRecord::Schema.define(version: 20171130164730) do
     t.index ["invitations_count"], name: "index_decidim_users_on_invitations_count"
     t.index ["invited_by_id"], name: "index_decidim_users_on_invited_by_id"
     t.index ["reset_password_token"], name: "index_decidim_users_on_reset_password_token", unique: true
+  end
+
+  create_table "decidim_votings_votings", force: :cascade do |t|
+    t.jsonb "title"
+    t.jsonb "description"
+    t.string "image"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "status", default: 0
+    t.integer "decidim_scope_id"
+    t.datetime "census_date_limit"
+    t.integer "importance"
+    t.string "voting_system"
+    t.jsonb "system_configuration"
+    t.bigint "decidim_feature_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_feature_id"], name: "decidim_votings_feature_index"
+    t.index ["decidim_scope_id"], name: "index_decidim_votings_votings_on_decidim_scope_id"
   end
 
   add_foreign_key "decidim_authorizations", "decidim_users"

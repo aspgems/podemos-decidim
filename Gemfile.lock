@@ -12,6 +12,17 @@ GIT
       rails (~> 5.1.4)
       rectify
 
+GIT
+  remote: https://github.com/podemos-info/decidim-votings.git
+  revision: 80b13cb106dd4908c1f23d6d572aebdcbfa4852c
+  branch: master
+  specs:
+    decidim-votings (0.1.0)
+      decidim-core (>= 0.7.0, <= 0.8.0)
+      pg
+      rails (~> 5.1.4)
+      rectify
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -633,6 +644,7 @@ DEPENDENCIES
   decidim-assemblies
   decidim-collaborations (~> 0.1.0)!
   decidim-dev
+  decidim-votings!
   faker (~> 1.8.4)
   iban_bic
   letter_opener_web (~> 1.3.0)
