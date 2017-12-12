@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/podemos-info/decidim-module-votings.git
-  revision: d2cf6101b921ea848f9cd9e14de8cad2ca717d76
+  revision: 807a3fc59e91d4b238bf8e6ec60a65fd687d6b82
   branch: master
   specs:
     decidim-votings (0.1.0)
